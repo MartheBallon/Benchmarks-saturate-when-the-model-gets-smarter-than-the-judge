@@ -11,47 +11,48 @@ Benchmarks are important tools for tracking progress in the development of large
 The Omni-MATH-2 dataset is available at (https://huggingface.co/datasets/martheballon/Omni-MATH-2). All other data necessary to replicate the results are available at (10.5281/zenodo.18380308).
    
 ```
+.
 ├── claude/
-│   ├── claude_filtered_judged_by_gpt5mini.jsonl
-│   ├── claude_filtered_judged_by_oj.jsonl
-│   ├── claude_tagged_judged_by_gpt5mini.jsonl
-│   ├── claude_tagged_judged_by_oj.jsonl              
+│   ├── claude_filtered_judged_by_gpt5mini.jsonl       # GPT-5 mini as a judge outputs on Omni-MATH-2-Filtered 
+│   ├── claude_filtered_judged_by_oj.jsonl             # Omni-Judge outputs on Omni-MATH-2-Filtered 
+│   ├── claude_tagged_judged_by_gpt5mini.jsonl         # GPT-5 mini as a judge outputs on Omni-MATH-2-Tagged
+│   └── claude_tagged_judged_by_oj.jsonl               # Omni-Judge outputs on Omni-MATH-2-Tagged         
 ├── deepseek/
 │   ├── deepseek_filtered_judged_by_gpt5mini.jsonl
 │   ├── deepseek_filtered_judged_by_oj.jsonl
 │   ├── deepseek_tagged_judged_by_gpt5mini.jsonl
-│   ├── deepseek_tagged_judged_by_oj.jsonl 
+│   └── deepseek_tagged_judged_by_oj.jsonl 
 ├── gemini/
-│   ├── (4 files)
+│   ├── ...                                          
 ├── gpt-5/
-│   ├── (4 files)
+│   ├── ...
 ├── kimi/
-│   ├── (4 files)
-├── Analysis
-│   ├── figures_main.ipynb
-│   ├── compute_granular_performance.py
-│   ├── Table1.py
+│   ├── ...
+├── Analysis/                                          
+│   ├── figures_main.ipynb                           # Notebook to generate figures
+│   ├── compute_granular_performance.py              # Compute domain and difficulty specific accuracy (based on the code in Gao et al. 2024)
+│   ├── Table1.py                                    # Script to generate Table 1 
 │   ├── TableA1.py
 │   ├── TableA2.py
-│   ├── utils.py              
+│   └── utils.py              
 ├── Figures/
-│   ├── Cleaning process.pdf                   
+│   ├── Cleaning process.pdf                        # Overview of the cleaning process
 │   ├── Figure 3.pdf       
 │   ├── Figure 5.pdf             
-│   ├── Example_estimation.pdf       
-│   └── Example_proof.pdf
-│   └── Example_image.pdf
-│   └── Example_should_delete.pdf
-│   └── Example_easy_equivalence.pdf
-│   └── Example_hard_equivalence.pdf
+│   ├── Example_estimation.pdf                      # Example of the evaluation pipeline (dataset, model, judge)  on a problem with tag 'estimation'   
+│   ├── Example_proof.pdf
+│   ├── Example_image.pdf
+│   ├── Example_should_delete.pdf
+│   ├── Example_easy_equivalence.pdf                # Example of a judge disagreemend where equivalence with the reference answer is easy to assess
+│   ├── Example_hard_equivalence.pdf
 │   └── Example_wrong_reference_answer.pdf            
 └── requirements.txt
 ```
 
 ## Datasets
 
-Omni-MATH-2, a manually revised version of Omni-MATH; comprising a clean, exact answer subset Omni-MATH-2-Filtered and a tagged, non-standard subset Omni-MATH-2-Tagged (questions requiring proofs, estimation, images). To obtain the two subsets execute the following commands.
-```
+Omni-MATH-2, a manually revised version of Omni-MATH, comprising a clean, exact answer subset Omni-MATH-2-Filtered and a tagged, non-standard subset Omni-MATH-2-Tagged (questions requiring proofs, estimation, images). To obtain the two subsets execute the following commands.
+```bash
 # Create subsets Omni-MATH-2-Filtered and Omni-MATH-2-Tagged
 omni_math_2 = pd.read_json("Omni-Math-2.jsonl", lines=True)
 
@@ -63,11 +64,11 @@ omni_math_2_filtered = omni_math_2[omni_math_2['tags'].apply(lambda x: len(x) ==
 ```
 
 ## Models
-- Claude Sonnet 4.5 (\texttt{claude-sonnet-4-5-20250929}, $64{,}000$ output tokens, $25,000$ thinking budget, Claude Batch API)
-- DeepSeek V3.2 (\texttt{deepseek-reasoner}, $64{,}000$ output tokens (shared), implicit thinking budget, DeepSeek API)
-- Gemini 3 Pro (\texttt{gemini-3-pro-preview}, $64{,}000$ output tokens, high thinking level, no thinking budget, Gemini Batch API)
-- GPT-5 (\texttt{gpt-5-2025-08-07}, medium reasoning effort, no token limit, OpenAI Batch API)
-- Kimi K2 Thinking (\texttt{kimi-k2-thinking}, $128{,}000$ output tokens via \texttt{max\_tokens}, $256{,}000$ context window, Moonshot API)
+- Claude Sonnet 4.5 (`claude-sonnet-4-5-20250929`, 64,000 output tokens, 25,000 thinking budget, Claude Batch API)
+- DeepSeek V3.2 (`deepseek-reasoner`, 64,000 output tokens (shared), implicit thinking budget, DeepSeek API)
+- Gemini 3 Pro (`gemini-3-pro-preview`, 64,000 output tokens, high thinking level, no thinking budget, Gemini Batch API)
+- GPT-5 (`gpt-5-2025-08-07`, medium reasoning effort, no token limit, OpenAI Batch API)
+- Kimi K2 Thinking (`kimi-k2-thinking`, 128,000 output tokens via `max_tokens`, 256,000 context window, Moonshot API)
 
 ## Example of how dataset errors can propagate through the evaluation pipeline
 ![Example_image](figures/Example_image.pdf)
