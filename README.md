@@ -2,7 +2,7 @@
 
 This repository contains the code to 'Benchmarks saturate when the model becomes smarter than the judge' by Marthe Ballon, Andres Algaba, Brecht Verbeken and Vincent Ginis ([arXiv link](https://arxiv.org/abs/2601.19532v1)).
 
-Benchmarks are important tools for tracking progress in the development of large language models (LLMs). However, inaccuracies in datasets and evaluation methods often undermine their effectiveness. Here, we present Omni-MATH-2: a manually revised version of the original Omni-MATH dataset that preserves its size (n = 4,428) while significantly improving LaTeX compilability, solvability, and verifiability. A total of 647 problems were edited (14.6%) and 247 were tagged as non-standard (5.6%). This means they contain images, request estimations or proofs, or are degenerate (e.g. duplicate, no reference answer, empty problem etc). We have released multiple evaluation-ready subsets, notably Omni-MATH-2-Filtered (n = 4,181), from which the tagged non-standard questions have been excluded to ensure suitability for judging exact answers. The cleaning process is illustrated in the figure below.
+Benchmarks are important tools for tracking progress in the development of large language models (LLMs). However, inaccuracies in datasets and evaluation methods often undermine their effectiveness. Here, we present Omni-MATH-2: a manually revised version of the original Omni-MATH dataset that preserves its size (n = 4,428) while significantly improving LaTeX compilability, solvability, and verifiability. A total of 647 problems were edited (14.6%) and 247 were tagged as non-standard (5.6%). This means they contain images, request estimations or proofs, or are degenerate (e.g. duplicate, no reference answer, empty problem etc). We have released multiple evaluation-ready subsets, notably Omni-MATH-2-Filtered (n = 4,181), from which the tagged non-standard questions have been excluded to ensure suitability for judging exact answers. 
 
 ## Overview of the cleaning process
 ![Cleaning process](figures/cleaning.pdf)
@@ -39,7 +39,7 @@ The Omni-MATH-2 dataset is available at (https://huggingface.co/datasets/martheb
 │   ├── Cleaning process.pdf                        # Overview of the cleaning process
 │   ├── Figure 3.pdf       
 │   ├── Figure 5.pdf             
-│   ├── Example_estimation.pdf                      # Example of the evaluation pipeline (dataset, model, judge)  on a problem with tag 'estimation'   
+│   ├── Example_estimation.pdf                      # Example of the evaluation pipeline (dataset, model, judge) on a problem with tag 'estimation'   
 │   ├── Example_proof.pdf
 │   ├── Example_image.pdf
 │   ├── Example_should_delete.pdf
