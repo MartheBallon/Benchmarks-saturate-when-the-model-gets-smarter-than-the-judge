@@ -71,7 +71,7 @@ omni_math_2_filtered = omni_math_2[omni_math_2['tags'].apply(lambda x: len(x) ==
 - Kimi K2 Thinking (`kimi-k2-thinking`, 128,000 output tokens via `max_tokens`, 256,000 context window, Moonshot API)
 
 ## Example of how dataset errors can propagate through the evaluation pipeline
-![Example_image](figures/Example_missing_image.pdf)
+![Example_image](Figures/Example_missing_image.pdf)
 
 
 ## Citation
