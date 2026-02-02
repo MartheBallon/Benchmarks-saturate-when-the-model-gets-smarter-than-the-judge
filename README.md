@@ -5,7 +5,7 @@ This repository contains the code to 'Benchmarks saturate when the model becomes
 Benchmarks are important tools for tracking progress in the development of large language models (LLMs). However, inaccuracies in datasets and evaluation methods often undermine their effectiveness. Here, we present Omni-MATH-2: a manually revised version of the original Omni-MATH dataset that preserves its size (n = 4,428) while significantly improving LaTeX compilability, solvability, and verifiability. A total of 647 problems were edited (14.6%) and 247 were tagged as non-standard (5.6%). This means they contain images, request estimations or proofs, or are degenerate (e.g. duplicate, no reference answer, empty problem etc). We have released multiple evaluation-ready subsets, notably Omni-MATH-2-Filtered (n = 4,181), from which the tagged non-standard questions have been excluded to ensure suitability for judging exact answers. 
 
 ## Overview of the cleaning process
-![Cleaning process](Figures/Cleaning_process.pdf)
+![Cleaning process](Figures/Cleaning.png)
 
 ## Overview of the data
 The Omni-MATH-2 dataset is available at (https://huggingface.co/datasets/martheballon/Omni-MATH-2). All other data necessary to replicate the results are available at (10.5281/zenodo.18380308).
